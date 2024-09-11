@@ -26,6 +26,7 @@ const MainPageBanner = ({
   extra: ReadonlyArray<{
     uuid: string;
     value: string;
+    link: string;
   }>;
   actions: ReadonlyArray<{
     uuid: string;
@@ -83,7 +84,7 @@ const MainPageBanner = ({
             <li key={item.uuid}>
               <Link
                 target="_blank"
-                to="https://www.google.com/"
+                to={item.link}
               >
                 {t(item.value)}
               </Link>

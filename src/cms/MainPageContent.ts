@@ -7,14 +7,17 @@ export const MAIN_PAGE_CONTENT = {
       {
         uuid: "32аdsfsd",
         value: "mainPageBanner.extra.joinToUs",
+        link: "https://t.me/frog_crpt",
       },
       {
         uuid: "3423d",
         value: "mainPageBanner.extra.ContactToUs",
+        link: "https://t.me/ulyafrogivna",
       },
       {
         uuid: "fds435",
         value: "mainPageBanner.extra.PrivateChannel",
+        link: "https://t.me/frog_crpt_private",
       },
     ],
     subtitle: [
@@ -43,7 +46,7 @@ export const MAIN_PAGE_CONTENT = {
       {
         uuid: "asdfafsgab123",
         label: "Связаться",
-        link: "https://t.me/rocketsup",
+        link: "https://t.me/ulyafrogivna",
         variant: "secondary" as ButtonVariant,
         icon: "telegram" as SupportedIcon,
       },

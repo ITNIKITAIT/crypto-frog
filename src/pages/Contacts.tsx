@@ -25,10 +25,10 @@ const Contacts = (): JSX.Element => {
         >
           {t("contactinfo")}{" "}
           <a
-            href="https://t.me/rocketsup"
+            href="https://t.me/ulyafrogivna"
             style={{ textDecoration: "underline" }}
           >
-            t.me/rocketsup
+            https://t.me/ulyafrogivna
           </a>
         </Typography>
       </Box>
