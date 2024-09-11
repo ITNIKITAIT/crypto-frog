@@ -1,0 +1,64 @@
+@import '../../../ui/variables';
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-top: 1em;
+  padding-bottom: 1em;
+
+  margin-left: 2em;
+  margin-right: 2em;
+
+  margin-top: 1em;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+    @media #{$media-query-sm} {
+      flex-direction: column;
+      gap: 1em;
+    }
+}
+
+.footer__telegram {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 1000;
+  span {
+    color: #fff;
+    padding-bottom: 1px;
+    border-bottom: 1px solid #fff;
+  }
+  @media #{$media-query-sm} {
+      margin-top: 1em;
+  }
+}
+
+.copyright-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 1000;
+  span {
+    color: #fff;
+    padding-bottom: 1px;
+  }
+  a {
+    text-decoration: underline;
+    color: #fff;
+  }
+  @media #{$media-query-sm} {
+      margin-top: 1em;
+  }
+}
+
+.logo {
+  z-index: 1000;
+  @media #{$media-query-sm} {
+    z-index: 1000;
+    margin-top: 1em;
+}
+}

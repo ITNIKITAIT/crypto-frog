@@ -1,0 +1,232 @@
+@import "../lib/ui/variables";
+.img-404 {
+  width: 619px;
+  height: 283px;
+}
+
+@media (max-width: 700px) {
+  .img-404 {
+    width: 309.5px; /* Half the original width */
+    height: 141.5px; /* Half the original height */
+  }
+}
+
+.title-404 {
+  color: #fff;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 135%; /* 48.6px */
+  text-transform: uppercase;
+}
+
+.subtitle-404 {
+  color: #fff;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 30px */
+}
+
+.language-switch {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item {
+  margin: 1px;
+  cursor: pointer;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.item:hover {
+  color: #a0f900;
+}
+
+.item-clicked {
+  color: #a0f900; /* Зеленый цвет или другие стили для активной кнопки */
+  text-decoration: underline; /* Дополнительные стили для активной кнопки */
+}
+
+.logo-language {
+  display: flex;
+  width: 100%;
+}
+
+.product__media {
+  width: 240px;
+  height: 240px;
+  @media #{$media-query-lg} {
+    width: 360px;
+    height: 360px;
+  }
+  @media #{$media-query-xs} {
+    width: 240px;
+    height: 240px;
+  }
+}
+
+.product__flag {
+  position: absolute;
+  bottom: 25px;
+  left: 110px;
+  display: flex;
+  width: 40px;
+  @media #{$media-query-lg} {
+    bottom: 40px;
+    left: 170px;
+  }
+  @media #{$media-query-xs} {
+    bottom: 20px;
+    left: 110px;
+  }
+}
+
+.product__media-wrapper {
+  position: relative;
+}
+
+.product__quantity {
+  position: absolute;
+  top: 10px;
+  left: 45px;
+  display: flex;
+  width: 149px;
+  height: 38px;
+  display: inline-flex;
+  padding: 2px 4px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  background: rgba(160, 249, 0, 0.1);
+  @media #{$media-query-lg} {
+    top: 20px;
+    left: 100px;
+  }
+  @media #{$media-query-xs} {
+    top: 10px;
+    left: 50px;
+  }
+}
+
+.product__quantity__item_text {
+  color: #a0f900;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%;
+}
+
+.product__main_div {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.product__link {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin-left: 40px;
+  @media (max-width: 418px) {
+    align-items: center;
+    justify-content: center;
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+.product__actions {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  // justify-content: center;
+  margin-left: 25%;
+  gap: 16px;
+  &-buy {
+    padding: 16px 32px;
+    gap: 8px;
+    @media (max-width: 418px) {
+      width: 100%;
+    }
+  }
+    &-cart {
+      display: flex;
+      padding: 16px 32px;
+      // justify-content: center;
+      // align-items: center;
+      gap: 8px;
+      color: #fff;
+      @media (max-width: 418px) {
+        width: 100%;
+      }
+    }
+  @media #{$media-query-lg} {
+    margin-left: 40%;
+    }
+  @media #{$media-query-md} {
+    justify-content: center;
+    align-items: center;
+    margin-left: 0;
+  }
+  @media (max-width: 418px) {
+    flex-direction: column;
+  }
+}
+
+.description {
+  margin-top: 24px;
+  margin-bottom: 8px;
+  @media #{$media-query-xs} {
+    width: 100%;
+  }
+}
+
+.div__name__description {
+  position: relative;
+  padding: 0;
+  flex-direction: column;
+  margin-left: 24px;
+  display: flex;
+  @media (max-width: 418px) {
+    margin: 0;
+  }
+  justify-content: center;
+}
+
+.price {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.product__quantity__google__bing {
+  position: absolute;
+  top: 4px;
+  left: 45px;
+  display: flex;
+  width: 149px;
+  height: 33px;
+  display: inline-flex;
+  padding: 2px 4px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  background: #232323;
+  @media #{$media-query-lg} {
+    top: 20px;
+    left: 100px;
+  }
+  @media #{$media-query-xs} {
+    top: 10px;
+    left: 50px;
+  }
+}

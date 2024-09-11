@@ -1,0 +1,3 @@
+export const MONOBANK_CARD = "4441 1111 5659 4982";
+
+export const CRYPTO_WALLET = "TWjrTP7R4xSjMs1YXf388FnFBFcP2J8uEt";

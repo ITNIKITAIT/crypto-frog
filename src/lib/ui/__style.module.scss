@@ -1,0 +1,450 @@
+@import "variables.scss";
+
+a {
+  color: inherit;
+}
+
+// Logo
+.site-logo {
+  &:focus {
+    outline: 1px solid white;
+    border-radius: 5px;
+  }
+}
+
+// Typography
+.typography {
+  font-family: "Montserrat", sans-serif;
+  color: $white;
+
+  &_title1 {
+    font-size: 64px;
+    text-transform: uppercase;
+    line-height: 120%;
+    font-weight: 900;
+    @media #{$media-query-md} {
+      font-size: 48px;
+    }
+    @media #{$media-query-sm} {
+      font-size: 36px;
+    }
+  }
+  &_title2 {
+    font-size: 36px;
+    line-height: 120%;
+    font-weight: 900;
+    text-transform: uppercase;
+    @media #{$media-query-md} {
+      font-size: 24px;
+    }
+  }
+  &_body1 {
+    font-size: 24px;
+    line-height: 140%;
+    font-weight: 600;
+  }
+  &_body2 {
+    font-size: 16px;
+    line-height: 130%;
+    font-weight: 700;
+  }
+  &_body2bold {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 140%;
+  }
+  &_body3 {
+    font-size: 14px;
+    line-height: 140%;
+    font-weight: 400;
+    // color: rgba(255, 255, 255, 0.70);
+  }
+  &_body3bold {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 140%;
+  }
+  &_body4 {
+    font-size: 12px;
+    line-height: 140%;
+    font-weight: 400;
+  }
+  &_copyright {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    color: #ffffffb2;
+  }
+  &_body5 {
+    font-family: Montserrat;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+  }
+
+  // color
+  &_color {
+    &_primary {
+      color: #ffffff;
+    }
+    &_secondary {
+      color: #ffffffb2;
+    }
+  }
+}
+
+// Button
+.button {
+  padding: 10;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  line-height: 130%;
+  font-weight: 700;
+  color: #070a03;
+  outline: 0;
+  background-color: #232323;
+
+  cursor: pointer;
+
+  border-radius: 100px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  transition: background 0.2s ease;
+
+  &_small {
+    padding: 8px 16px;
+  }
+  &_medium {
+    padding: 16px 24px;
+  }
+  &_large {
+    padding: 16px 48px;
+  }
+  &_fullWidth {
+    width: 100%;
+  }
+
+  &:focus {
+    outline: none;
+  }
+  &:disabled {
+    cursor: auto;
+    color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+    &:hover {
+      cursor: auto;
+      color: rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.05);
+    }
+  }
+  &_primary {
+    background: #a0f901;
+    border: 0;
+
+    &:hover {
+      background: #bdfb4d;
+    }
+    &-clicked {
+      background: #83cb03 !important;
+    }
+  }
+
+  &_secondary {
+    background: #232323;
+    border: none;
+
+    &:hover {
+      background: #393939;
+    }
+    &-clicked {
+      background: #2e2e2e !important;
+    }
+  }
+
+  &_text {
+    border: none;
+    outline: 0;
+    background: transparent;
+  }
+
+  &_icon {
+    padding: 8px;
+  }
+}
+
+// Container
+.container {
+  max-width: 1296px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+// Payment Button
+.payment-button {
+  cursor: pointer;
+
+  padding: 8px 32px;
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+
+  background: rgba(255, 255, 255, 0.1);
+  transition: background 0.2s ease;
+  border: 0;
+
+  &:disabled {
+    cursor: auto;
+    img {
+      opacity: 0.3;
+    }
+    span {
+      color: rgba(255, 255, 255, 0.3);
+    }
+    background: rgba(255, 255, 255, 0.05);
+    &:hover {
+      cursor: auto;
+      img {
+        opacity: 0.3;
+      }
+      span {
+        color: rgba(255, 255, 255, 0.3);
+      }
+      background: rgba(255, 255, 255, 0.05);
+    }
+  }
+
+  &_bitcoin {
+    &:hover {
+      background: rgba(247, 147, 26, 0.5);
+    }
+    &-clicked {
+      background: rgba(247, 147, 26, 0.3) !important;
+    }
+  }
+
+  &_card {
+    &:hover {
+      background: #393939;
+    }
+    &-clicked {
+      background: #2e2e2e !important;
+    }
+  }
+
+  &_usdt {
+    &:hover {
+      background: rgba(80, 175, 149, 0.5);
+    }
+    &-clicked {
+      background: rgba(80, 175, 149, 0.3) !important;
+    }
+  }
+}
+
+// Checkbox
+.checkbox-container {
+  display: block;
+  position: relative;
+
+  // margin-bottom: 12px;
+  padding-left: 1.625em;
+
+  cursor: pointer;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  cursor: pointer;
+  pointer-events: none;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 16px;
+  width: 16px;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+}
+
+/* On mouse-over, add a grey background color */
+.checkbox-container:hover input ~ .checkmark {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkbox-container input:checked ~ .checkmark {
+  border: 1px solid transparent;
+  background: #a0f900;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox-container .checkmark:after {
+  left: 5px;
+  top: 1px;
+  width: 4px;
+  height: 9px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+// Input
+
+.input-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.input-container input {
+  width: 100%;
+  padding: 16px 24px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  transition: border 0.2s ease;
+}
+
+.input-container label {
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  color: #999;
+  pointer-events: none;
+  transition: 0.2s ease all;
+}
+
+// Modal
+
+.modal--close {
+  padding: 8px;
+  align-items: flex-start;
+  gap: 8px;
+  border-radius: 8px;
+  transition: background 0.3s;
+
+  &:hover {
+    background: #393939;
+  }
+  &-clicked{
+    background:  #2E2E2E;
+  }
+}
+
+
+// Divider
+
+.divider {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  width: 100%;
+  &--padding-top {
+    &_small {
+      padding-top: 8px;
+    }
+    &_medium {
+      padding-top: 16px;
+    }
+    &_large {
+      padding-top: 24px;
+    }
+  }
+  &--padding-bottom {
+    &_small {
+      padding-top: 8px;
+    }
+    &_medium {
+      padding-top: 16px;
+    }
+    &_large {
+      padding-top: 24px;
+    }
+  }
+}
+
+// Button Container
+.button-container {
+  display: flex;
+  align-items: center;
+  margin-top: 16px;
+  &_align-right {
+    justify-content: flex-end;
+  }
+  &_align-left {
+    justify-content: flex-start;
+  }
+  &_align-center {
+    justify-content: center;
+  }
+  &_align-between {
+    justify-content: space-between;
+  }
+  &_gap-sm {
+    gap: 8px;
+  }
+  &_gap-md {
+    gap: 16px;
+  }
+  &_gap-lg {
+    gap: 24px;
+  }
+}
+
+// Payment Radio
+.payment-radio {
+  cursor: pointer;
+  background-color: transparent;
+
+  // // padding: 8px 32px;
+  // // border-radius: 8px;
+
+  display: flex;
+  // flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+
+  // // background: rgba(255, 255, 255, 0.1);
+  // // transition: background 0.2s ease;
+  // border: 0;
+}

@@ -1,0 +1,14 @@
+$background: #050802;
+$background-secondary: #232323;
+
+$white: #fff;
+
+$screen-size-lg : 1024px;
+$screen-size-md : 768px;
+$screen-size-sm : 576px;
+$screen-size-xs : 360px;
+
+$media-query-lg: "only screen and (max-width: #{$screen-size-lg})";
+$media-query-md: "only screen and (max-width: #{$screen-size-md})";
+$media-query-sm: "only screen and (max-width: #{$screen-size-sm})";
+$media-query-xs: "only screen and (max-width: #{$screen-size-xs})";

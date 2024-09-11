@@ -1,0 +1,16 @@
+@import '../../../ui/variables';
+
+.mobile-cart {
+    display: none;
+    @media #{$media-query-md} {
+        display: block;
+        position: relative;
+        z-index: 1;
+        margin-left: auto;
+        // margin-right: 1em;
+        // cursor: pointer;
+        // img {
+        //     width: 24px;
+        // }
+    }
+}

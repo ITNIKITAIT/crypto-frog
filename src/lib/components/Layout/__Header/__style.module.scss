@@ -1,0 +1,89 @@
+@import "../../../ui/variables";
+
+.header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-top: 1em;
+  padding-bottom: 1em;
+
+  margin-left: 2em;
+  margin-right: 2em;
+
+  margin-bottom: 1em;
+  @media #{$media-query-sm} {
+    padding-top: 1em;
+    padding-bottom: 1em;
+
+    margin-left: 1em;
+    margin-right: 1em;
+
+    margin-bottom: 1em;
+  }
+  // > :first-child {
+  //   margin-right: -20em;
+  // }
+
+  // border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header-nav {
+
+  // max-width: 280px;
+  ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 4px 8px;
+    gap: 60px;
+  }
+  @media #{$media-query-md} {
+    display: none;
+  }
+}
+
+.header-cart {
+  // display: block; //корзина - круглая
+  @media #{$media-query-md} {
+    display: none;
+  }
+}
+
+.header-burger {
+  display: none;
+  @media #{$media-query-md} {
+    display: block;
+  }
+}
+
+.language-switch {
+  // position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item {
+  margin: 1px;
+  cursor: pointer;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.item:hover {
+  color: #a0f900;
+}
+
+.item-clicked {
+  color: #a0f900; /* Зеленый цвет или другие стили для активной кнопки */
+  text-decoration: underline; /* Дополнительные стили для активной кнопки */
+}
+
+.item-clicked {
+  color: #a0f900;
+  text-decoration: underline;
+}

@@ -1,0 +1,17 @@
+@import '../../../lib/ui/variables';
+
+.logout {
+  font-size: 14px;
+  padding: 0.8em 1em;
+  background-color: #A0F901;
+  transition: background-color 0.3s;
+  width: 130px;
+}
+
+.logout:hover {
+    background: #BDFB4D
+  }
+.logout-clicked {
+    background: #83CB03 !important;
+  }
+

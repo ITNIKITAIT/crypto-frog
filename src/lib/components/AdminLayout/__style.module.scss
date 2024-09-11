@@ -1,0 +1,30 @@
+@import '../../ui/variables';
+
+.layout {
+    font-family: 'Montserrat', sans-serif;
+    background: $background;
+    color: $white;
+  
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  
+    a {
+      text-decoration: none;
+    }
+  }
+
+.logout {
+  font-size: 14px;
+  padding: 0.8em 1em;
+  background-color: #A0F901;
+  transition: background-color 0.3s;
+}
+
+.logout:hover {
+    background: #BDFB4D
+  }
+.logout-clicked {
+    background: #83CB03 !important;
+  }
+

@@ -1,0 +1,22 @@
+@import '../../../ui/variables';
+.title {
+    margin: 0;
+    max-width: 250px;
+}
+
+.mobileform {
+    font-size: 14px;
+  }
+  
+  /* Размер шрифта для десктопной версии */
+  .desktop-form {
+    font-size: 18px;
+  }
+
+  .mobile-cart {
+    display: block;
+    @media #{$media-query-md} {
+        display: none;
+    }
+}
+  

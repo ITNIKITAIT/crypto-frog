@@ -1,0 +1,8 @@
+@import '../../../ui/variables';
+
+.cart {
+    display: block;
+    @media #{$media-query-md} {
+        display: none;
+    }
+}

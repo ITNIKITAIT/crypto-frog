@@ -1,0 +1,33 @@
+@import '../../ui/variables';
+
+.products {
+  margin-top: 8em;
+  @media #{$media-query-md} {
+    margin-top: 4em;
+  }
+}
+
+.title-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1em;
+  gap: 2em;
+  // Стили для экрана размером 768px и менее
+  @media #{$media-query-lg} {
+    justify-content: space-between;    
+  }
+}
+
+.products-layout {
+  display: grid;
+  grid-template-columns: 240px auto;
+  grid-gap: 20px;
+  // Стили для экрана размером 1024px и менее
+  @media #{$media-query-lg} {
+      grid-template-columns: auto;
+      aside {
+        display: none;
+      }
+      
+    }
+}

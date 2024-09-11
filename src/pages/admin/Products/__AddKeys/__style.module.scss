@@ -1,0 +1,9 @@
+.button-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cancel, .delete {
+    color: rgba(255, 255, 255, 0.7);
+}

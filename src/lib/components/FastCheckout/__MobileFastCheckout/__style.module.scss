@@ -1,0 +1,11 @@
+@import '../../../ui/variables';
+
+.mobile-cart {
+    display: none;
+    @media #{$media-query-md} {
+        display: block;
+        position: relative;
+        z-index: 1;
+        margin-left: auto;
+    }
+}

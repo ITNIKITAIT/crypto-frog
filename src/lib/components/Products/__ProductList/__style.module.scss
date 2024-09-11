@@ -1,0 +1,17 @@
+@import '../../../ui/variables';
+
+.table-head {
+    display: flex;
+    padding-left: 16px;
+    margin-bottom: 16px;
+    margin-top: 16px;
+    :first-child {
+        width: 46%;
+    }
+    :nth-child(2) {
+        width: 16.5%;
+    }
+    @media #{$media-query-md} {
+        display: none;
+      }
+}
