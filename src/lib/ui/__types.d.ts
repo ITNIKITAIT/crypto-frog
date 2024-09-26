@@ -29,6 +29,8 @@ export type SupportedIcon =
   | "plus"
   | "home"
   | "star"
+  | "arrowLeft"
+  | "contactUs";
 
 export type IconSize = "sm" | "md" | "lg";
 

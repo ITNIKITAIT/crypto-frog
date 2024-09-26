@@ -254,7 +254,7 @@ a {
 .checkbox-container {
   display: block;
   position: relative;
-
+  margin-bottom: 20px;
   // margin-bottom: 12px;
   padding-left: 1.625em;
 
@@ -316,11 +316,25 @@ input[type="checkbox"] {
   top: 1px;
   width: 4px;
   height: 9px;
-  border: solid white;
+  border: solid black;
   border-width: 0 2px 2px 0;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+.checkbox-disabled {
+  pointer-events: none;
+  opacity: 0.25;
+}
+
+.checkbox-disabled input ~ .checkmark {
+  background-color: transparent !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+}
+
+.checkbox-disabled input ~ .checkmark:after {
+  display: none !important;
 }
 
 // Input
@@ -364,11 +378,10 @@ input[type="checkbox"] {
   &:hover {
     background: #393939;
   }
-  &-clicked{
-    background:  #2E2E2E;
+  &-clicked {
+    background: #2e2e2e;
   }
 }
-
 
 // Divider
 

@@ -1,12 +1,13 @@
 import Typography from "lib/ui/Typography";
 import type { CategoryProps } from "lib/category/types";
 import type { ProductProps, ProductSectionProps } from "lib/product/types";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { useTranslation } from "react-i18next";
-
+import { useSearchParams } from "react-router-dom";
 import ProductSection from "./__ProductSection";
 
 import styles from "./__style.module.scss";
+import { useFilter } from "../__context";
 
 const ProductList = ({
   categories,
@@ -17,6 +18,9 @@ const ProductList = ({
 }): JSX.Element => {
   // map categories and products and create an array of categories with their ids, names and products into one array
   const { t } = useTranslation();
+  const { selectedCountries, setProducts, selectedCategories } = useFilter();
+  const [searchParams] = useSearchParams();
+  const countriesParams = searchParams.get("countries");
   const productSections = useMemo(() => {
     const sections: Array<ProductSectionProps> = [];
 
@@ -24,19 +28,52 @@ const ProductList = ({
       const productsByCategory = products.filter(
         product => product.categoryId === category.id,
       );
+      const productsByCountry = products.filter(product =>
+        selectedCountries.includes(product.country as string),
+      );
 
-      if (productsByCategory.length) {
+      let totalProducts: ProductProps[] = [];
+
+      if (productsByCategory.length) totalProducts = productsByCategory;
+      if (productsByCountry.length) totalProducts = productsByCountry;
+
+      if (productsByCountry.length && productsByCountry.length) {
+        totalProducts = productsByCategory.filter(categoryProduct =>
+          productsByCountry.some(
+            countryProduct => countryProduct.id === categoryProduct.id,
+          ),
+        );
+      }
+
+      if (totalProducts.length) {
         sections.push({
           categoryId: category.id,
           categoryName: category.name,
-          products: productsByCategory,
+          products: totalProducts,
           pinned: category.pinned,
         });
       }
     });
 
     return sections;
-  }, [categories, products]);
+  }, [categories, products, selectedCountries]);
+
+  useEffect(() => {
+    if (selectedCategories.length) {
+      const filteredByCategory = products.filter(product =>
+        selectedCategories.includes(product.categoryId),
+      );
+      setProducts(filteredByCategory);
+    } else {
+      setProducts(products as ProductProps[]);
+    }
+  }, [
+    productSections,
+    setProducts,
+    countriesParams,
+    products,
+    selectedCategories,
+  ]);
 
   return (
     <>

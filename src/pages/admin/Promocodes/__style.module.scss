@@ -3,3 +3,18 @@
   align-items: center;
   margin-bottom: -5px;
 }
+
+.addButton {
+  width: 300px;
+}
+
+.switcher {
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  p {
+    font-size: 20px;
+    font-weight: 700;
+  }
+}

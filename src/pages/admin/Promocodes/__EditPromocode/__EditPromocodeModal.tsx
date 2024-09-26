@@ -1,15 +1,16 @@
 import { ChangeEvent, useCallback, useState } from "react";
-// import { putApiAdminCategory } from "lib/endpoints/api/admin/category/put";
-// import { useAuth } from "lib/auth/admin/AuthContext";
 import { AxiosError } from "axios";
 import { useNotification } from "lib/notification";
 import { useNavigate } from "react-router-dom";
 
+import { useAuth } from "lib/auth/admin/AuthContext";
 import { Alert, Box, Grid, TextField } from "@mui/material";
 import Button from "lib/ui/Button";
 import ButtonContainer from "lib/ui/ButtonContainer";
+import { updateApiAdminDiscount } from "lib/endpoints/api/admin/discount/patch";
 import Modal from "lib/ui/Modal";
-import { AddPromocodeProps, IProcomodeItem } from "../types";
+import { IProcomodeItem } from "../types";
+import { validateAmount } from "../__CreateNewPromocode/validationPromocode";
 
 const EditPromocodeModal = ({
   promocode,
@@ -22,23 +23,24 @@ const EditPromocodeModal = ({
   onClose: () => void;
   onSuccess: () => void;
 }): JSX.Element => {
-  // const { token } = useAuth();
-  const [newCategory, setNewCategory] = useState<AddPromocodeProps>({
-    name: promocode.name,
-    discount: promocode.discount,
-    numberOfUses: promocode.numberOfUses,
+  const { token } = useAuth();
+  const [newPromocode, setNewPromocode] = useState<{ amount: number }>({
+    amount: promocode.amount,
   });
+  const [amountError, setAmountError] = useState<null | string>(null);
   const [errorMessage, setErrorMessage] = useState<null | string>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { setNotification } = useNotification();
   const navigate = useNavigate();
 
   const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    const { name, type, checked, value } = e.target;
-    setNewCategory(prev => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
+    const amount = e.target.value;
+    if (!/^\d*$/.test(amount) || amount.length > 2) {
+      return;
+    }
+    setAmountError(validateAmount(Number(amount)));
+
+    setNewPromocode({ amount: Number(amount) });
   }, []);
 
   const handleSubmit = useCallback(
@@ -46,34 +48,34 @@ const EditPromocodeModal = ({
       e.preventDefault();
       try {
         setIsLoading(true);
-        // await putApiAdminCategory({
-        //   category: {
-        //     id: promocode.id,
-        //     name: promocode.name,
-        //     discount: promocode.discount,
-        //     numberOfUses: promocode.numberOfUses
-        //   },
-        //   token,
-        // });
+        await updateApiAdminDiscount({
+          discount: {
+            id: promocode.id,
+            amount: newPromocode.amount,
+          },
+          token,
+        });
         setIsLoading(true);
-        // setNewCategory({
-        //   name: "",
-        //   pinned: false,
-        // });
+        setNewPromocode({
+          amount: 1,
+        });
         onSuccess();
         onClose();
         setNotification({
-          message: `Категория "${newCategory.name}" успешно обновлена`,
+          message: `Промокод "${promocode.code}" успешно обновлен`,
           type: "success",
         });
       } catch (error: unknown) {
         if (error instanceof AxiosError) {
           switch (error.response?.status) {
             case 400:
-              setErrorMessage("Такая категория уже существует");
+              setErrorMessage("Такой промокод уже существует");
               break;
             case 401:
               navigate("/xxxopernDyn5fYk/admin/login");
+              break;
+            case 409:
+              setErrorMessage("Вы не изменили процент");
               break;
             case 500:
               setErrorMessage("Ошибка сервера");
@@ -87,7 +89,16 @@ const EditPromocodeModal = ({
         setIsLoading(false);
       }
     },
-    [navigate, setNotification, onClose, onSuccess, newCategory.name],
+    [
+      navigate,
+      setNotification,
+      onClose,
+      onSuccess,
+      promocode.code,
+      newPromocode.amount,
+      token,
+      promocode.id,
+    ],
   );
 
   return (
@@ -116,10 +127,21 @@ const EditPromocodeModal = ({
               id="discount"
               label="Процент"
               name="discount"
-              value={newCategory.discount}
+              value={newPromocode.amount}
               onChange={handleChange}
               autoFocus
             />
+            {amountError && (
+              <div
+                style={{
+                  color: "red",
+                  fontSize: "14px",
+                  position: "absolute",
+                }}
+              >
+                {amountError}
+              </div>
+            )}
           </Grid>
         </Grid>
         <ButtonContainer>

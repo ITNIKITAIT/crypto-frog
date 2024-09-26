@@ -4,9 +4,16 @@ import Checkbox from "lib/ui/Checkbox";
 import type { CategoryProps } from "lib/category/types";
 import { useFilter } from "./__context";
 
-const Filter = ({ filter }: { filter: CategoryProps }): JSX.Element => {
+const Filter = ({
+  filter,
+  disabled,
+}: {
+  filter: CategoryProps;
+  disabled?: boolean;
+}): JSX.Element => {
   const navigate = useNavigate();
-  const { selectedCategories, setSelectedCategories } = useFilter();
+  const { selectedCategories, setSelectedCategories, selectedCountries } =
+    useFilter();
   const [isChecked, setIsChecked] = useState<boolean>(
     selectedCategories.includes(filter.id),
   );
@@ -23,9 +30,23 @@ const Filter = ({ filter }: { filter: CategoryProps }): JSX.Element => {
 
     if (newSelectedCategories.length > 0) {
       const categoryIds = newSelectedCategories.join(",");
-      navigate(`/categories/${categoryIds}`, { replace: true });
+      navigate(
+        `/categories/${categoryIds}${
+          selectedCountries.length
+            ? `?countries=${selectedCountries.join(",")}`
+            : ""
+        }`,
+        { replace: true },
+      );
     } else {
-      navigate(`/categories`, { replace: true });
+      navigate(
+        `/categories${
+          selectedCountries.length
+            ? `?countries=${selectedCountries.join(",")}`
+            : ""
+        }`,
+        { replace: true },
+      );
     }
   }, [
     isChecked,
@@ -33,6 +54,7 @@ const Filter = ({ filter }: { filter: CategoryProps }): JSX.Element => {
     setSelectedCategories,
     navigate,
     filter.id,
+    selectedCountries,
   ]);
 
   useEffect(() => {
@@ -41,6 +63,7 @@ const Filter = ({ filter }: { filter: CategoryProps }): JSX.Element => {
 
   return (
     <Checkbox
+      disabled={disabled}
       label={filter.name}
       id={filter.id.toString()}
       checked={isChecked}

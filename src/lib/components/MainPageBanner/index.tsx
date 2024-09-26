@@ -3,6 +3,9 @@ import { useTranslation } from "react-i18next";
 import { useCallback } from "react";
 import { Link } from "react-router-dom";
 
+// import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
+// import HeadsetMicIcon from "@mui/icons-material/HeadsetMic";
+
 import Button from "lib/ui/Button";
 import Icon from "lib/ui/Icon";
 import Typography from "lib/ui/Typography";
@@ -27,6 +30,7 @@ const MainPageBanner = ({
     uuid: string;
     value: string;
     link: string;
+    icon: SupportedIcon;
   }>;
   actions: ReadonlyArray<{
     uuid: string;
@@ -68,6 +72,19 @@ const MainPageBanner = ({
             {actions[0].label}
             {t("mainPageBanner.ourProducts")}
           </Button>
+          <Button
+            className={style["main-page-private"]}
+            variant={actions[0].variant}
+          >
+            <Link
+              target="_blank"
+              to="https://t.me/frog_crpt_private"
+            >
+              {actions[0].icon && <Icon icon={actions[0].icon} />}
+              {actions[0].label}
+              {t("mainPageBanner.PrivateChannel")}
+            </Link>
+          </Button>
           {/* <Link
             to={actions[1].link}
             className={style["link-button"]}
@@ -82,6 +99,7 @@ const MainPageBanner = ({
         <ul className={style["main-page-banner--extra"]}>
           {extra.map(item => (
             <li key={item.uuid}>
+              <Icon icon={item.icon} />
               <Link
                 target="_blank"
                 to={item.link}

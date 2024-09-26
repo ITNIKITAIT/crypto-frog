@@ -1,6 +1,6 @@
 import style from "./__style.module.scss";
 
-const Checkbox = ({
+const CountryCheckbox = ({
   disabled,
   id,
   checked,
@@ -30,6 +30,6 @@ const Checkbox = ({
   </label>
 );
 
-Checkbox.displayName = "Checkbox";
+CountryCheckbox.displayName = "CountryCheckbox";
 
-export default Checkbox;
+export default CountryCheckbox;

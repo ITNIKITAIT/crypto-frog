@@ -35,7 +35,10 @@ const Content = ({
 
       <div className={style["products-layout"]}>
         <Box component="aside">
-          <Filters categories={allCategories} />
+          <Filters
+            products={products}
+            categories={allCategories}
+          />
         </Box>
 
         <Box>

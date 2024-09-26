@@ -10,7 +10,7 @@ export const deleteApiAdminDiscount = ({
   id: number;
   token: null | string;
 }): Promise<AxiosResponse<void>> =>
-  axios.delete(`${BASE_URL}/api/admin/discount/user/${id}`, {
+  axios.delete(`${BASE_URL}/api/admin/discount/${id}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

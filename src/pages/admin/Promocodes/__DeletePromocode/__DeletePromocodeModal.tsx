@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import { AxiosError } from "axios";
-import { deleteApiAdminCategory } from "lib/endpoints/api/admin/category/delete";
+import { deleteApiAdminDiscount } from "lib/endpoints/api/admin/discount/delete";
 import { useNotification } from "lib/notification";
 import Button from "lib/ui/Button";
 import ButtonContainer from "lib/ui/ButtonContainer";
@@ -28,7 +28,7 @@ const DeletePromocodeModal = ({
 
   const handleDelete = useCallback(async () => {
     try {
-      const response = await deleteApiAdminCategory({ id: promocodeId, token });
+      const response = await deleteApiAdminDiscount({ id: promocodeId, token });
       if (response.status === 200) {
         onSuccess();
         onClose();

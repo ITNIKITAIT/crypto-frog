@@ -1,21 +1,37 @@
+import { AxiosError } from "axios";
 import { Alert, CircularProgress } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 // import type { CategoryProps } from "lib/category/types";
 import { Fragment, useEffect } from "react";
 import { useAuth } from "lib/auth/admin/AuthContext";
 import PromocodeTable from "./__PromocodesTable";
-import { IProcomodeItem } from "./types";
+import { IProcomodeItem, PromocodeType } from "./types";
+import CreateNewPromocode from "./__CreateNewPromocode";
 
 const Content = ({
   promocodes,
+  reload,
+  page,
+  totalPages,
+  limit,
   error,
   isLoading,
-  reload,
+  type,
+  onPageChange,
+  onLimitChange,
+  handleType,
 }: {
   promocodes: null | ReadonlyArray<IProcomodeItem>;
-  error: boolean | null;
-  isLoading: boolean;
   reload: () => void;
+  page: number;
+  totalPages: number;
+  limit: number;
+  type: PromocodeType;
+  error: AxiosError | null;
+  isLoading: boolean;
+  onPageChange: (newPage: number) => void;
+  onLimitChange: (newLimit: number) => void;
+  handleType: (newType: PromocodeType) => void;
 }): JSX.Element => {
   const navigate = useNavigate();
   const { setToken } = useAuth();
@@ -43,10 +59,20 @@ const Content = ({
   }
   return (
     <Fragment>
+      <CreateNewPromocode
+        reload={reload}
+        type={type}
+        handleType={handleType}
+      />
       {promocodes && promocodes.length !== 0 ? (
         <PromocodeTable
           promocodes={promocodes}
           reload={reload}
+          page={page}
+          totalPages={totalPages}
+          limit={limit}
+          onPageChange={onPageChange}
+          onLimitChange={onLimitChange}
         />
       ) : (
         <Alert

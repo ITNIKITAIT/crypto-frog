@@ -2,7 +2,7 @@ import { Delete } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import { useAuth } from "lib/auth/admin/AuthContext";
 import { useCallback, useState } from "react";
-import DeleteCategoryModal from "./__DeletePromocodeModal";
+import DeletePromocodeModal from "./__DeletePromocodeModal";
 
 const DeletePromocode = ({
   promocodeId,
@@ -25,7 +25,7 @@ const DeletePromocode = ({
       <IconButton onClick={handleModalOpen}>
         <Delete />
       </IconButton>
-      <DeleteCategoryModal
+      <DeletePromocodeModal
         promocodeId={promocodeId}
         promocodeName={promocodeName}
         token={token}

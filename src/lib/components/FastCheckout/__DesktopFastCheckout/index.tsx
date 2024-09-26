@@ -1,8 +1,8 @@
+import Modal from "lib/ui/Modal";
 import {
   useCartItemsDispatch,
   useCartItemsState,
 } from "lib/cart/items-context";
-import Modal from "lib/ui/Modal";
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import Content from "./__Content";

@@ -14,7 +14,6 @@ const Products = (): JSX.Element => {
     isLoading: isCategoriesLoading,
     error: categoriesError,
   } = useCategories();
-
   const {
     products,
     isLoading: isProductsLoading,

@@ -4,4 +4,9 @@ export type CategoryProps = {
   pinned: boolean;
 };
 
+export type CountryProps = {
+  id: number;
+  name: string;
+};
+
 export type AddCategoryProps = Omit<CategoryProps, "id">;

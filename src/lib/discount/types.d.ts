@@ -4,7 +4,7 @@ export type DiscountProps = {
   amount: number; // Сумма скидки (в процентах 1 - 100)
 };
 
-export type AddDiscountProps = Omit<DiscountProps, "id">;
+export type AddDiscountProps = { code: string; amount: number };
 
 /*
 

@@ -8,16 +8,13 @@ export const MAIN_PAGE_CONTENT = {
         uuid: "32аdsfsd",
         value: "mainPageBanner.extra.joinToUs",
         link: "https://t.me/frog_crpt",
+        icon: "arrowLeft" as SupportedIcon,
       },
       {
         uuid: "3423d",
         value: "mainPageBanner.extra.ContactToUs",
         link: "https://t.me/ulyafrogivna",
-      },
-      {
-        uuid: "fds435",
-        value: "mainPageBanner.extra.PrivateChannel",
-        link: "https://t.me/frog_crpt_private",
+        icon: "contactUs" as SupportedIcon,
       },
     ],
     subtitle: [

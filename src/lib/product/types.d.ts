@@ -64,6 +64,6 @@ export type ProductSectionProduct = {
 export type ProductSectionProps = {
   categoryId: number;
   categoryName: string;
-  products: ReadonlyArray<ProductSectionProduct>;
+  products: ProductProps[];
   pinned?: boolean;
 };

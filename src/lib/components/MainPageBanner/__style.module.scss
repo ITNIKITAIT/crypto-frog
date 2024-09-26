@@ -26,17 +26,20 @@
   list-style: none;
   // margin: 0;
   padding: 0;
-  margin-top: 4em;
+  margin-top: 2em;
 
   display: flex;
   align-items: center;
-  gap: 1em;
+  gap: 24px;
   li {
-    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 32px;
     color: black;
     background: #f1f1f1;
     border: 0;
-    border-radius: 20px;
+    border-radius: 100px;
     font-weight: 700;
     cursor: pointer;
     &:hover {
@@ -152,6 +155,9 @@
 
   display: flex;
   gap: 1.5em;
+  button {
+    padding: 16px 32px;
+  }
   @media #{$media-query-md} {
     display: flex;
     justify-content: center;
@@ -159,6 +165,9 @@
   @media #{$media-query-sm} {
     flex-direction: column;
     gap: 1em;
+    .main-page-private {
+      display: none;
+    }
   }
 }
 

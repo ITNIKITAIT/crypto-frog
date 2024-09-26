@@ -2,19 +2,47 @@ import Button from "lib/ui/Button";
 import ButtonContainer from "lib/ui/ButtonContainer";
 
 import { Fragment, useCallback, useState } from "react";
-import CreateNewCategoryModal from "./__CreateNewPromocodeModal";
+import CreateNewPromocodeModal from "./__CreateNewPromocodeModal";
+import { PromocodeType } from "../types";
+import styles from "../__style.module.scss";
+import { CustomSwitch } from "./CustimSwitch";
 
-const CreateNewCategory = ({ reload }: { reload: () => void }): JSX.Element => {
+const CreateNewPromocode = ({
+  reload,
+  type,
+  handleType,
+}: {
+  reload: () => void;
+  type: PromocodeType;
+  handleType: (newType: PromocodeType) => void;
+}): JSX.Element => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleModalOpen = useCallback(() => setIsModalOpen(true), []);
   const handleModalClose = useCallback(() => setIsModalOpen(false), []);
+
+  const handleChange = () => {
+    handleType(type === "GENERAL" ? "PERSONAL" : "GENERAL");
+  };
+
   return (
     <Fragment>
       <ButtonContainer>
-        <Button onClick={handleModalOpen}>Добавить категорию</Button>
+        <div className={styles.switcher}>
+          <CustomSwitch
+            checked={type === "PERSONAL"}
+            onClick={handleChange}
+          />
+          <p>Только персональные промокоды</p>
+        </div>
+        <Button
+          className={styles.addButton}
+          onClick={handleModalOpen}
+        >
+          Добавить промокод
+        </Button>
       </ButtonContainer>
-      <CreateNewCategoryModal
+      <CreateNewPromocodeModal
         isModalOpen={isModalOpen}
         onClose={handleModalClose}
         onSuccess={reload}
@@ -23,6 +51,6 @@ const CreateNewCategory = ({ reload }: { reload: () => void }): JSX.Element => {
   );
 };
 
-CreateNewCategory.displayName = "CreateNewCategory";
+CreateNewPromocode.displayName = "CreateNewPromocode";
 
-export default CreateNewCategory;
+export default CreateNewPromocode;

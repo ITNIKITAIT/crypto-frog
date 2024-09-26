@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 // import type { CategoryProps } from "lib/category/types";
 // import Icon from "lib/ui/Icon";
+import { useCallback } from "react";
 import DeletePromocode from "./__DeletePromocode";
 import EditPromocode from "./__EditPromocode";
 // import style from "./__style.module.scss";
@@ -18,11 +19,33 @@ import { IProcomodeItem } from "./types";
 const PromocodeTable = ({
   promocodes,
   reload,
+  page,
+  totalPages,
+  limit,
+  onPageChange,
+  onLimitChange,
 }: {
   promocodes: ReadonlyArray<IProcomodeItem>;
   reload: () => void;
+  page: number;
+  totalPages: number;
+  limit: number;
+  onPageChange: (newPage: number) => void;
+  onLimitChange: (newLimit: number) => void;
 }): JSX.Element => {
-  const handleChangePage = () => {};
+  const handleChangePage = useCallback(
+    (event: React.MouseEvent<HTMLButtonElement> | null, newPage: number) => {
+      onPageChange(newPage);
+    },
+    [onPageChange],
+  );
+
+  const handleChangeLimit = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      onLimitChange(parseInt(event.target.value, 10));
+    },
+    [onLimitChange],
+  );
   return (
     <TableContainer
       component={Paper}
@@ -55,16 +78,16 @@ const PromocodeTable = ({
                   reload={reload}
                 />
               </TableCell>
-              <TableCell size="small">{code.name}</TableCell>
-              <TableCell size="small">{code.discount}%</TableCell>
-              <TableCell size="small">{code.numberOfUses}</TableCell>
+              <TableCell size="small">{code.code}</TableCell>
+              <TableCell size="small">{code.amount}%</TableCell>
+              <TableCell size="small">{code.usageCount}</TableCell>
               <TableCell
                 size="small"
                 align="right"
               >
                 <DeletePromocode
                   promocodeId={code.id}
-                  promocodeName={code.name}
+                  promocodeName={code.code}
                   reload={reload}
                 />
               </TableCell>
@@ -75,10 +98,11 @@ const PromocodeTable = ({
       <TablePagination
         component="div"
         labelRowsPerPage="Промокодов на странице"
-        count={10}
-        page={0}
-        rowsPerPage={10}
+        count={totalPages}
+        page={page}
+        rowsPerPage={limit}
         onPageChange={handleChangePage}
+        onRowsPerPageChange={handleChangeLimit}
       />
     </TableContainer>
   );

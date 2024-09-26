@@ -25,6 +25,8 @@ import card from "assets/icons/card.svg";
 import plus from "assets/icons/plus.svg";
 import home from "assets/icons/icon_home.svg";
 import star from "assets/icons/star.png";
+import arrowLeft from "assets/icons/arrowLeft.svg";
+import contactUs from "assets/icons/contactUs.svg";
 import type { IconSize, SupportedIcon } from "./__types";
 
 const ICON_MAP: Record<SupportedIcon, string> = {
@@ -52,6 +54,8 @@ const ICON_MAP: Record<SupportedIcon, string> = {
   plus,
   home,
   star,
+  arrowLeft,
+  contactUs,
 };
 
 const getIconSize = (s?: IconSize): number => {

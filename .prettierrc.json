@@ -6,6 +6,5 @@
   "printWidth": 80,
   "useTabs": false,
   "endOfLine": "auto",
-  "singleAttributePerLine": true,
-  "arrowParens": "avoid"
+  "singleAttributePerLine": true
 }

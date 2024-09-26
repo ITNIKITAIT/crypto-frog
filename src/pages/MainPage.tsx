@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { FilterProvider } from "lib/components/Products/__context";
 import { MAIN_PAGE_CONTENT } from "../cms/MainPageContent";
 import Layout from "../lib/components/Layout";
@@ -8,8 +8,13 @@ import Products from "../lib/components/Products";
 
 const MainPage = (): JSX.Element => {
   const { categoryIds } = useParams<{ categoryIds?: string }>();
+  const [searchParams] = useSearchParams();
+  const countries = searchParams.get("countries");
   const [initialSelectedCategories, setInitialSelectedCategories] = useState<
     number[]
+  >([]);
+  const [initialSelectedCountries, setinitialSelectedCountries] = useState<
+    string[]
   >([]);
 
   useEffect(() => {
@@ -19,12 +24,22 @@ const MainPage = (): JSX.Element => {
     } else {
       setInitialSelectedCategories([]);
     }
-  }, [categoryIds]);
+
+    if (countries) {
+      const names = countries.split(",");
+      setinitialSelectedCountries(names);
+    } else {
+      setinitialSelectedCountries([]);
+    }
+  }, [categoryIds, countries]);
 
   const { banner } = MAIN_PAGE_CONTENT;
   return (
     <Layout>
-      <FilterProvider initialSelectedCategories={initialSelectedCategories}>
+      <FilterProvider
+        initialSelectedCategories={initialSelectedCategories}
+        initialSelectedCountries={initialSelectedCountries}
+      >
         <MainPageBanner
           // title={banner.title}
           extra={banner.extra}
