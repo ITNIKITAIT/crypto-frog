@@ -18,7 +18,12 @@ const ProductList = ({
 }): JSX.Element => {
   // map categories and products and create an array of categories with their ids, names and products into one array
   const { t } = useTranslation();
-  const { selectedCountries, setProducts, selectedCategories } = useFilter();
+  const {
+    selectedCountries,
+    setProductsForCountry,
+    selectedCategories,
+    setProductsForCategory,
+  } = useFilter();
   const [searchParams] = useSearchParams();
   const countriesParams = searchParams.get("countries");
   const productSections = useMemo(() => {
@@ -63,14 +68,24 @@ const ProductList = ({
       const filteredByCategory = products.filter(product =>
         selectedCategories.includes(product.categoryId),
       );
-      setProducts(filteredByCategory);
+      setProductsForCategory(filteredByCategory);
     } else {
-      setProducts(products as ProductProps[]);
+      setProductsForCategory(products as ProductProps[]);
+    }
+    if (selectedCountries.length) {
+      const filteredByCountry = products.filter(product =>
+        selectedCountries.includes(product.country as string),
+      );
+      setProductsForCountry(filteredByCountry);
+    } else {
+      setProductsForCountry(products as ProductProps[]);
     }
   }, [
     productSections,
-    setProducts,
+    setProductsForCountry,
+    setProductsForCategory,
     countriesParams,
+    selectedCountries,
     products,
     selectedCategories,
   ]);

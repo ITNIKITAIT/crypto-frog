@@ -13,10 +13,10 @@ interface FilterContextProps {
   setSelectedCategories: (categories: number[]) => void;
   selectedCountries: string[];
   setSelectedCountries: (countries: string[]) => void;
-  productsFiltered: ProductProps[];
-  setProducts: (productsFiltered: ProductProps[]) => void;
+  productsForCountry: ProductProps[];
+  setProductsForCountry: (productsForCountry: ProductProps[]) => void;
   productsForCategory: ProductProps[];
-  setProductsForCategory: (productsFiltered: ProductProps[]) => void;
+  setProductsForCategory: (productsForCategory: ProductProps[]) => void;
 }
 
 const FilterContext = createContext<FilterContextProps | undefined>(undefined);
@@ -38,7 +38,9 @@ export const FilterProvider: React.FC<FilterProviderProps> = ({
   const [selectedCountries, setSelectedCountries] = useState(
     initialSelectedCountries,
   );
-  const [productsFiltered, setProducts] = useState<ProductProps[]>([]);
+  const [productsForCountry, setProductsForCountry] = useState<ProductProps[]>(
+    [],
+  );
   const [productsForCategory, setProductsForCategory] = useState<
     ProductProps[]
   >([]);
@@ -59,15 +61,15 @@ export const FilterProvider: React.FC<FilterProviderProps> = ({
       setSelectedCategories,
       selectedCountries,
       setSelectedCountries,
-      productsFiltered,
-      setProducts,
+      productsForCountry,
+      setProductsForCountry,
       productsForCategory,
       setProductsForCategory,
     }),
     [
       selectedCategories,
       selectedCountries,
-      productsFiltered,
+      productsForCountry,
       productsForCategory,
     ],
   );

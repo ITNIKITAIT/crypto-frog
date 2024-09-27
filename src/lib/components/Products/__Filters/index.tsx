@@ -42,7 +42,6 @@ const Filters = ({
         {t("filter")}
       </Typography>
       <FiltersSelect
-        products={products}
         title="typeProxy"
         categories={categories}
       />

@@ -2,36 +2,37 @@ import { useState, useCallback, useMemo } from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { CategoryProps } from "lib/category/types";
 import { useTranslation } from "react-i18next";
-import { ProductProps } from "lib/product/types";
 import style from "./__style.module.scss";
 import Filter from "../../__Filter";
+import { useFilter } from "../../__context";
 
 const FiltersSelect = ({
   categories,
   title,
-  products,
 }: {
   categories: ReadonlyArray<CategoryProps>;
-  products: ReadonlyArray<ProductProps>;
   title: string;
 }): JSX.Element => {
   const [onSelected, setOnSelected] = useState<boolean>(false);
+  const { productsForCountry } = useFilter();
   const { t } = useTranslation();
 
   const existingCategories = useMemo(
     () =>
       categories.filter(category =>
-        products.some(product => product.categoryId === category.id),
+        productsForCountry.some(product => product.categoryId === category.id),
       ),
-    [categories, products],
+    [categories, productsForCountry],
   );
   const disabledCategories = useMemo(
     () =>
       categories.filter(
         category =>
-          !products.some(product => product.categoryId === category.id),
+          !productsForCountry.some(
+            product => product.categoryId === category.id,
+          ),
       ),
-    [categories, products],
+    [categories, productsForCountry],
   );
 
   const toggleSelect = useCallback((): void => {

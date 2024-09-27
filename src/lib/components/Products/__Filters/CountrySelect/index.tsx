@@ -15,7 +15,7 @@ const CountrySelect = ({
 }): JSX.Element => {
   const [onSelected, setOnSelected] = useState<boolean>(false);
   const { t } = useTranslation();
-  const { productsFiltered } = useFilter();
+  const { productsForCategory } = useFilter();
 
   const toggleSelect = useCallback((): void => {
     setOnSelected(prev => !prev);
@@ -24,17 +24,19 @@ const CountrySelect = ({
   const existingCountries = useMemo(
     () =>
       countries.filter(country =>
-        productsFiltered.some(product => product.country === country.name),
+        productsForCategory.some(product => product.country === country.name),
       ),
-    [countries, productsFiltered],
+    [countries, productsForCategory],
   );
   const disabledCountries = useMemo(
     () =>
       countries.filter(
         country =>
-          !productsFiltered.some(product => product.country === country.name),
+          !productsForCategory.some(
+            product => product.country === country.name,
+          ),
       ),
-    [countries, productsFiltered],
+    [countries, productsForCategory],
   );
   return (
     <>
