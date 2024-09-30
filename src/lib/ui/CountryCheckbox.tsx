@@ -1,3 +1,4 @@
+import ReactCountryFlag from "react-country-flag";
 import style from "./__style.module.scss";
 
 const CountryCheckbox = ({
@@ -26,6 +27,16 @@ const CountryCheckbox = ({
       onChange={onChange}
     />
     <span className={style.checkmark} />
+    {label && (
+      <ReactCountryFlag
+        countryCode={label}
+        svg
+        style={{
+          width: "18px",
+        }}
+      />
+    )}
+
     {label}
   </label>
 );
