@@ -95,8 +95,11 @@ const Content = ({ order }: { order: OrderProps }): JSX.Element => {
         console.error("Ошибка при проверке оплаты: ", error);
       }
     };
-
-    checkOrderStatus();
+    const interval = setInterval(() => {
+      checkOrderStatus();
+    }, 10000);
+    // checkOrderStatus();
+    return () => clearInterval(interval);
   }, [order.orderId]);
 
   useEffect(() => {
