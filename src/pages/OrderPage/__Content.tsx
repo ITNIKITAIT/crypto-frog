@@ -95,12 +95,17 @@ const Content = ({ order }: { order: OrderProps }): JSX.Element => {
         console.error("Ошибка при проверке оплаты: ", error);
       }
     };
-    const interval = setInterval(() => {
-      checkOrderStatus();
-    }, 10000);
+    let interval;
+    if (!isOrderPaid) {
+      interval = setInterval(() => {
+        checkOrderStatus();
+      }, 10000);
+    }
     // checkOrderStatus();
-    return () => clearInterval(interval);
-  }, [order.orderId]);
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [order.orderId, isOrderPaid]);
 
   useEffect(() => {
     if (localTime) {
