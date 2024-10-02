@@ -1,4 +1,4 @@
-@import '../../../ui/variables';
+@import "../../../ui/variables";
 
 .filters {
   background-color: $background-secondary;
@@ -17,5 +17,11 @@
     li {
       margin-bottom: 1em;
     }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .filters {
+    margin-top: 0;
   }
 }

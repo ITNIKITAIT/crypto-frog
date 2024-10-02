@@ -2,6 +2,7 @@ import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next"; // Переместите этот импорт выше
 import Button from "lib/ui/Button";
 import Icon from "lib/ui/Icon";
+import { ProductProps } from "lib/product/types";
 import type { CategoryProps } from "lib/category/types";
 import MenuFilters from "./__MenuFilters";
 import style from "./__style.module.scss";
@@ -9,8 +10,10 @@ import { useFilter } from "../__context";
 
 const FiltersButton = ({
   categories,
+  products,
 }: {
   categories: ReadonlyArray<CategoryProps>;
+  products: ReadonlyArray<ProductProps>;
 }): JSX.Element => {
   const { selectedCategories } = useFilter();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -40,6 +43,7 @@ const FiltersButton = ({
         {t("filter")}
       </Button>
       <MenuFilters
+        products={products}
         anchorEl={anchorEl}
         open={open}
         handleClose={handleClose}

@@ -30,7 +30,10 @@ const Content = ({
         >
           {t("products")}
         </Typography>
-        <FiltersButton categories={allCategories} />
+        <FiltersButton
+          products={products}
+          categories={allCategories}
+        />
       </div>
 
       <div className={style["products-layout"]}>
