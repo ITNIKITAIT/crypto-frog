@@ -133,6 +133,7 @@ const MainPageBanner = ({
         alt="cosmo"
         className={style.cosmo}
       />
+
       <Box>
         <img
           src={cosmo}

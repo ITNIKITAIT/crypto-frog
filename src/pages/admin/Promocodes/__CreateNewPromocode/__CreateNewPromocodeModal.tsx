@@ -22,6 +22,7 @@ const CreateNewPromocodeModal = ({
 }): JSX.Element => {
   const { token } = useAuth();
   const [newPromocode, setNewPromocode] = useState<AddDiscountProps>({
+    userId: 0,
     code: "",
     amount: 5,
   });
@@ -62,6 +63,7 @@ const CreateNewPromocodeModal = ({
         if (response.status === 201) {
           // Сбросить значения формы после добавления товара
           setNewPromocode({
+            userId: 0,
             code: "",
             amount: 5,
           });

@@ -17,6 +17,7 @@ import {
 import { useMemo } from "react";
 import { NavLink } from "react-router-dom";
 
+import Icon from "lib/ui/Icon";
 import style from "./__style.module.scss";
 
 const NavItem = ({
@@ -46,6 +47,8 @@ const NavItem = ({
         return <Telegram color="primary" />;
       case "promocodes":
         return <DiscountIcon color="primary" />;
+      case "ad":
+        return <Icon icon="arrowRight" />;
       default:
         return null;
     }

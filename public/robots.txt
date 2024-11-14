@@ -4,5 +4,5 @@ Allow: /
 Disallow: /*.js
 Disallow: /admin/
 Disallow: /order/
-Sitemap: https://rocket-marketplace.com/sitemap.xml
-Host: https://rocket-marketplace.com/
+Sitemap: https://cryptofrog.shop/sitemap.xml
+Host: https://cryptofrog.shop/

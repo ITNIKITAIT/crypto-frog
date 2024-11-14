@@ -42,11 +42,11 @@ const Filters = ({
         {t("filter")}
       </Typography>
       <FiltersSelect
-        title="typeProxy"
+        title="categoryItem"
         categories={categories}
       />
       <CountrySelect
-        title="geoProxy"
+        title="geoItem"
         countries={getCountries(products) as CountryProps[]}
       />
     </div>

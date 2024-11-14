@@ -27,6 +27,9 @@ import home from "assets/icons/icon_home.svg";
 import star from "assets/icons/star.png";
 import arrowLeft from "assets/icons/arrowLeft.svg";
 import contactUs from "assets/icons/contactUs.svg";
+import arrowRight from "assets/icons/ad.svg";
+import ad from "assets/icons/arrowRight.svg";
+import hyperlink from "assets/icons/hyperlink.svg";
 import type { IconSize, SupportedIcon } from "./__types";
 
 const ICON_MAP: Record<SupportedIcon, string> = {
@@ -56,6 +59,9 @@ const ICON_MAP: Record<SupportedIcon, string> = {
   star,
   arrowLeft,
   contactUs,
+  arrowRight,
+  ad,
+  hyperlink,
 };
 
 const getIconSize = (s?: IconSize): number => {

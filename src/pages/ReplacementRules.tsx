@@ -1,8 +1,11 @@
 import { Helmet } from "react-helmet";
 import { Box } from "@mui/material";
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import Icon from "lib/ui/Icon";
 import Layout from "../lib/components/Layout";
 import Typography from "../lib/ui/Typography";
+import style from "./__style.module.scss";
 
 const ReplacementRules = (): JSX.Element => {
   const { t } = useTranslation();
@@ -12,6 +15,13 @@ const ReplacementRules = (): JSX.Element => {
       <Helmet>
         <title>{t("replacementhelmet")}</title>
       </Helmet>
+      <Link
+        to="/"
+        className={style.back__link}
+      >
+        <Icon icon="chervon_left" />
+        {t("tothemain")}
+      </Link>
       <Typography
         component="h1"
         variant="title1"

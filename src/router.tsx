@@ -8,6 +8,7 @@ import AdminOrders from "pages/admin/Orders";
 import AdminAccounting from "pages/admin/Accounting";
 import OrderPage from "pages/OrderPage";
 import AdminPromocodes from "pages/admin/Promocodes";
+import AdminAdvertisement from "pages/admin/Advertisement";
 import MainPage from "./pages/MainPage";
 import ReplacementRules from "./pages/ReplacementRules";
 import Contacts from "./pages/Contacts";
@@ -70,6 +71,10 @@ export const router = createBrowserRouter([
   {
     path: "/xxxopernDyn5fYk/admin/promocodes",
     element: <AdminPromocodes />,
+  },
+  {
+    path: "/xxxopernDyn5fYk/admin/advertisement",
+    element: <AdminAdvertisement />,
   },
   {
     path: "/product/:productId",

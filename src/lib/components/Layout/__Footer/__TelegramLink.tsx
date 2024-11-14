@@ -1,9 +1,14 @@
 import telegram from "assets/icons/telegram.svg";
 import styles from "./__style.module.scss";
 
-const TelegramLink = (): JSX.Element => (
+interface Props {
+  name: string;
+  url: string;
+}
+
+const TelegramLink = ({ name, url }: Props): JSX.Element => (
   <a
-    href="https://t.me/rocketsup"
+    href={url}
     className={styles.footer__telegram}
     target="_blank"
     rel="noopener noreferrer"
@@ -12,7 +17,7 @@ const TelegramLink = (): JSX.Element => (
       src={telegram}
       alt="Telegram"
     />
-    <span>@rocketsup</span>
+    <span>{name}</span>
   </a>
 );
 

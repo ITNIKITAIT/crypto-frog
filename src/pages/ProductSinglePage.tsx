@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { Container, CircularProgress } from "@mui/material";
+
 import Button from "lib/ui/Button";
 import { Helmet } from "react-helmet";
 import { useTranslation } from "react-i18next";
@@ -132,11 +133,11 @@ const ProductSinglePage = (): JSX.Element => {
             </p>
           </div>
           <div className={style.price}>
-            <Typography variant="body5">
+            {/* <Typography variant="body5">
               <strong>
                 {t("price")}: {product.price} USD / {t("pcs")}
               </strong>
-            </Typography>
+            </Typography> */}
           </div>
         </div>
         <div className={style.div__name__description}>

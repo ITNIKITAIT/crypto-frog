@@ -30,7 +30,10 @@ export type SupportedIcon =
   | "home"
   | "star"
   | "arrowLeft"
-  | "contactUs";
+  | "contactUs"
+  | "arrowRight"
+  | "ad"
+  | "hyperlink";
 
 export type IconSize = "sm" | "md" | "lg";
 

@@ -21,12 +21,14 @@
   "price": "Price",
   "products": "Products",
   "buy": "Buy",
+  "cancel-order": "Cancel order",
   "quantity": "Quantity",
   "pcs": "1pcs",
   "contacts": "Contacts",
   "replacementrules": "Replacement rules",
   "contactinfo": "For any questions about replacing / exchanging / adding your product to the platform",
   "contactshelmet": "Contacts | The best consumables for you and your team",
+  "tothemain": "To the main",
   "replacementhelmet": "Replacement rules | The best consumables for you and your team",
   "cart": "Cart",
   "emptyCart": "Cart is empty",
@@ -90,6 +92,6 @@
   "pageproducts": "Products | The best consumables for you and your team",
   "invalidinput": "Invalid format",
   "uniquizer": "Uniquizer",
-  "typeProxy": "Proxy type",
-  "geoProxy": "Geo proxy"
+  "categoryItem": "Category",
+  "geoItem": "Geo"
 }

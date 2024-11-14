@@ -34,4 +34,9 @@ export const SIDEBAR_ITEMS = [
     to: "/xxxopernDyn5fYk/admin/promocodes",
     icon: "promocodes",
   },
+  {
+    title: "Рекламный банер",
+    to: "/xxxopernDyn5fYk/admin/advertisement",
+    icon: "ad",
+  },
 ];

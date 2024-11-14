@@ -90,8 +90,8 @@ const Content = ({
       if (discountAmount !== null) {
         await postApiAdminDiscount({
           discount: {
-            // userId: user.id,
-            code: "test",
+            userId: user.id,
+            code: "",
             amount: +discountAmount,
           },
           token,
@@ -107,7 +107,7 @@ const Content = ({
     } finally {
       setIsDiscountLoading(false);
     }
-  }, [discountAmount, onSuccess, reload, token]);
+  }, [discountAmount, onSuccess, reload, token, user.id]);
 
   const handleDeleteDiscount = useCallback(async () => {
     try {

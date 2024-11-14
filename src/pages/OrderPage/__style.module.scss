@@ -9,7 +9,7 @@
   border-radius: 32px;
   background: var(--Background-secondary, #232323);
   @media (max-width: 600px) {
-    width: 100%;    
+    width: 100%;
   }
 }
 .warning-icon {
@@ -28,26 +28,26 @@
 }
 
 .warning-head {
-    color: #FFF;
+  color: #fff;
 
-    /* Body/Body 2b */
-    font-family: Montserrat;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 140%;
-    /* 22.4px */
+  /* Body/Body 2b */
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%;
+  /* 22.4px */
 }
 p {
-    margin: 0px;
-    color: var(--Text-primary, #FFF);
-    /* Body/Body 2 */
-    font-family: Montserrat;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 140%;
-    /* 22.4px */
+  margin: 0px;
+  color: var(--Text-primary, #fff);
+  /* Body/Body 2 */
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  /* 22.4px */
 }
 
 .progress-container {
@@ -63,11 +63,10 @@ p {
   overflow: hidden; // добавим это свойство, чтобы скрыть лишнюю часть линии прогресса
 }
 
-
 .progress-bar {
   height: 100%;
   background-color: #a0f900;
-  background-image: url('../../assets/icons/frame_time.svg');
+  background-image: url("../../assets/icons/frame_time.svg");
   transition: right 1s ease;
   position: absolute;
   right: 0; // изначальное позиционирование
@@ -84,122 +83,142 @@ p {
   font-style: bold;
   font-weight: 900;
   line-height: 140%; /* 22.4px */
-  color: #070A03;
+  color: #070a03;
 }
 
 .language-switch {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  
-  }
-  
-  .item {
-    margin: 1px;
-    cursor: pointer;
-    background-color: transparent;
-    border-color: transparent;
-  } 
-  
-  .item:hover {
-    color: #A0F900;
-    
-  }
-  
-  .item-clicked {
-    color: #A0F900; /* Зеленый цвет или другие стили для активной кнопки */
-    text-decoration: underline; /* Дополнительные стили для активной кнопки */
-  }
-  
-
-  .logo-language {
-    display: flex;
-    align-items: center;
-    justify-content: space-between; 
-    width: 100%;
-  }
-
-  .info {
-      display: flex;
-      padding: 12px 24px;
-      align-items: flex-start;
-      gap: 8px;
-      border-radius: 100px;
-      background: rgba(160, 249, 0, 0.20);
-      color: #FFF;
-      justify-content: center;
-
-      /* Headline/H3 */
-      font-family: Montserrat;
-      font-size: 24px;
-      font-style: normal;
-      font-weight: 700;
-      line-height: 140%;
-      /* 33.6px */
-  }
-
-  .info-usdt {
-    width: 32px;
-    height: 32px;
-  }
-
-  .qr-div {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    @media (max-width: 960px) {
-      display: none;
-    }
-  }
-  
-  .qr-code {
-    display: flex;
-   /* Stack content vertically */
-    width: 270px;
-    height: 270px;
-    padding: 20px;
-    justify-content: center;
-    align-items: center;
-    border-radius: 56px;
-    background: #FFF;
-  }
-  
-  .qr-code-text {
-    margin-top: 10px; /* Add margin to separate text from image */
-    text-align: center; /* Center the text horizontally */
-    font-size: 16px; /* Adjust font size as needed */
-  }
-  
-  .copiedMessage {
-    width: 150px;
-    height: 40px;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    border-radius: 4px;
-    font-size: 18px;
-    font-family: Montserrat;
-    position: fixed;
-    bottom: 10%; /* Adjust the distance from the bottom as needed */
-    right: 20px; /* Adjust the distance from the right as needed */
-    z-index: 999; /* Ensure it appears above other content */
-    background: rgba(160, 249, 0, 0.20);
-    color: #FFF;
-
-    /* Headline/H3 */
-    font-family: Montserrat;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 140%;
-  }
-
-  .check-img {
-    width: 20px;
-    height: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-  
-  
 
+.item {
+  margin: 1px;
+  cursor: pointer;
+  background-color: transparent;
+  border-color: transparent;
+}
 
+.item:hover {
+  color: #a0f900;
+}
+
+.item-clicked {
+  color: #a0f900; /* Зеленый цвет или другие стили для активной кнопки */
+  text-decoration: underline; /* Дополнительные стили для активной кнопки */
+}
+
+.logo-language {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.info {
+  display: flex;
+  padding: 12px 24px;
+  align-items: flex-start;
+  gap: 8px;
+  border-radius: 100px;
+  background: rgba(160, 249, 0, 0.2);
+  color: #fff;
+  justify-content: center;
+
+  /* Headline/H3 */
+  font-family: Montserrat;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%;
+  /* 33.6px */
+}
+
+.info-usdt {
+  width: 32px;
+  height: 32px;
+}
+
+.qr-div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  @media (max-width: 960px) {
+    display: none;
+  }
+}
+
+.qr-code {
+  display: flex;
+  /* Stack content vertically */
+  width: 270px;
+  height: 270px;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 56px;
+  background: #fff;
+}
+
+.qr-code-text {
+  margin-top: 10px; /* Add margin to separate text from image */
+  text-align: center; /* Center the text horizontally */
+  font-size: 16px; /* Adjust font size as needed */
+}
+
+.copiedMessage {
+  width: 150px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  border-radius: 4px;
+  font-size: 18px;
+  font-family: Montserrat;
+  position: fixed;
+  bottom: 10%; /* Adjust the distance from the bottom as needed */
+  right: 20px; /* Adjust the distance from the right as needed */
+  z-index: 999; /* Ensure it appears above other content */
+  background: rgba(160, 249, 0, 0.2);
+  color: #fff;
+
+  /* Headline/H3 */
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%;
+}
+
+.check-img {
+  width: 20px;
+  height: 20px;
+}
+
+.cancel_btn {
+  padding: 16px 32px;
+  background-color: #a0f901;
+  border-radius: 100px;
+  border: none;
+  color: #070a03;
+  font-weight: 700;
+  font-size: 16px;
+  font-family: Montserrat;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 50px;
+  &:hover {
+    background-color: #bdfb4d;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .cancel_btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}

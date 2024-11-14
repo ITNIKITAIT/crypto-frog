@@ -27,7 +27,6 @@ const AdminPromocodes = (): JSX.Element => {
     ? (queryParams.type as PromocodeType)
     : "GENERAL";
 
-  const reload = () => {};
   const [promocodes, setpromocodes] =
     useState<null | ReadonlyArray<IProcomodeItem>>(null);
   const [page, setPage] = useState<number>(initialPage);
@@ -36,6 +35,25 @@ const AdminPromocodes = (): JSX.Element => {
   const [type, setType] = useState<PromocodeType>(initialType);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<null | AxiosError>(null);
+
+  // const reload = useCallback(async () => {
+  //   try {
+  //     setIsLoading(true);
+  //     const response = await getApiUserCategoryAll();
+  //     if (response.status === 200) {
+  //       setCategories([...response.data]);
+  //     }
+  //     if (response.status === 204) {
+  //       setCategories([]);
+  //     }
+  //   } catch (_error: unknown) {
+  //     if (_error instanceof AxiosError) {
+  //       setError(_error);
+  //     }
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // }, []);
 
   useEffect(() => {
     if (!token) {
@@ -79,40 +97,43 @@ const AdminPromocodes = (): JSX.Element => {
     [page, limit, updateUrl],
   );
 
-  useEffect(() => {
-    const fetchPromocodes = async () => {
-      try {
-        const response = await getApiAdminDiscountAll({
-          page,
-          size: limit,
-          token,
-        });
-        // Нету апи для всех промокодов
-        const total = await getApiAdminDiscountAll({
-          page: 0,
-          size: 10000000,
-          token,
-        });
-        setTotalPages(
-          type === "GENERAL"
-            ? total.data.length
-            : total.data.filter(code => code.type === type).length,
-        );
-        setpromocodes(
-          type === "GENERAL"
-            ? response.data
-            : response.data.filter(code => code.type === type),
-        );
-        setIsLoading(false);
-      } catch (_error) {
-        if (axios.isAxiosError(_error)) {
-          setError(_error);
-        }
-        setIsLoading(false);
+  const fetchPromocodes = useCallback(async () => {
+    try {
+      const response = await getApiAdminDiscountAll({
+        page,
+        size: limit,
+        token,
+      });
+      // Нету апи для всех промокодов
+      const total = await getApiAdminDiscountAll({
+        page: 0,
+        size: 10000000,
+        token,
+      });
+      setTotalPages(
+        type === "GENERAL"
+          ? total.data.length
+          : total.data.filter(code => code.type === type).length,
+      );
+      setpromocodes(
+        type === "GENERAL"
+          ? response.data
+          : response.data.filter(code => code.type === type),
+      );
+      setIsLoading(false);
+    } catch (_error) {
+      if (axios.isAxiosError(_error)) {
+        setError(_error);
       }
-    };
+      setIsLoading(false);
+    }
+  }, [token, limit, page, type]);
+
+  const reload = useCallback(() => fetchPromocodes(), [fetchPromocodes]);
+
+  useEffect(() => {
     fetchPromocodes();
-  }, [token, limit, page, totalPages, type]);
+  }, [fetchPromocodes]);
 
   return (
     <AdminLayout title="Промокоды">

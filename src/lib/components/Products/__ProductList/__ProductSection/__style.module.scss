@@ -1,32 +1,30 @@
-@import '../../../../ui/variables';
+@import "../../../../ui/variables";
 
 .product-section {
-    margin-bottom: 32px;
-    border-radius: 24px;
-    
+  margin-bottom: 32px;
+  border-radius: 24px;
+
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+
+  &__product {
     border-bottom: 2px solid rgba(255, 255, 255, 0.1);
 
-    &__product {
-      border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-      
-      &:last-child {
-        border-bottom: 24px;
-        
-      }
+    &:last-child {
+      border-bottom: 24px;
     }
-    ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      li {
-        &:last-child {
-          .product-section__product {
-            border-radius: 0 0 24px 24px;
-          }
-          
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li {
+      &:last-child {
+        .product-section__product {
+          border-radius: 0 0 24px 24px;
         }
       }
     }
+  }
 }
 
 .header {
@@ -46,29 +44,45 @@
 
 // product
 .product {
+  position: relative;
   padding: 16px;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
 
+  .arrowRight_svg {
+    fill: transparent;
+    margin-left: 10px;
+    cursor: pointer;
+  }
   border: 2px solid rgba(255, 255, 255, 0.1);
-
-    // Стили для экрана размером 768px и менее
-    @media #{$media-query-md} {
-      display: grid;
-      grid-gap: 2em;
-      grid-template-areas: 
-      'title title'
-      'amount price'
-      'actions actions';
+  &:hover {
+    background-color: #232323;
+    .arrowRight_svg {
+      fill: white;
     }
+  }
 
+  // Стили для экрана размером 768px и менее
+  @media #{$media-query-md} {
+    display: grid;
+    grid-gap: 2em;
+    grid-template-areas:
+      "title title"
+      "amount price"
+      "actions actions";
+    .arrowRight_svg {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+  }
 }
 
 .product__media-and-title-wrapper {
   display: flex;
-  cursor: pointer; 
+  cursor: pointer;
   align-items: center;
   flex-grow: 1;
   max-width: 380px;
@@ -84,7 +98,6 @@
 .product__media {
   width: 40px;
   height: 40px;
-
 }
 .product__flag {
   position: absolute;
@@ -167,12 +180,11 @@
 
 .icon {
   margin-right: 10px;
-  
-  }
+}
 
 .name {
   cursor: pointer;
   &:hover {
-    color:  #bdfb4d;
+    color: #bdfb4d;
   }
 }

@@ -6,7 +6,6 @@ import type { OrderProps } from "lib/orders/types";
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import Logo from "lib/ui/Logo";
 import { useTranslation } from "react-i18next";
 import Content from "./__Content";
 import LanguageSwitch from "./__LanguageSwitch";
@@ -67,7 +66,6 @@ const OrderPage = (): JSX.Element => {
   return (
     <Layout hideLayout>
       <div className={style["logo-language"]}>
-        <Logo />
         <LanguageSwitch />
       </div>
       <Helmet>

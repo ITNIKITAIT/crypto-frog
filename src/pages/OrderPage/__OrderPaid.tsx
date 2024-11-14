@@ -128,7 +128,7 @@ const OrderPaid = ({
   useEffect(() => {
     if (localTime) {
       // Добавляем 10 минут к времени создания заказа для определения времени окончания
-      const endTime = moment(localTime).add(10, "minutes");
+      const endTime = moment(localTime).add(15, "minutes");
 
       const interval = setInterval(() => {
         // Получаем текущее время
