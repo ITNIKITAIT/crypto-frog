@@ -115,12 +115,19 @@
     color: white;
     margin-right: 20px;
     padding-bottom: 10px;
+    &:not(:placeholder-shown) {
+      border-color: #a0f900;
+    }
+    &:not(:placeholder-shown) > {
+      padding: 30px;
+    }
   }
   &_icon {
     position: absolute;
     top: 50%;
     right: 0;
     transform: translateY(-50%);
+    fill: white;
   }
 }
 .save-btn {

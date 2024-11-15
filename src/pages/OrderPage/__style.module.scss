@@ -118,7 +118,7 @@ p {
 .info {
   display: flex;
   padding: 12px 24px;
-  align-items: flex-start;
+  align-items: center;
   gap: 8px;
   border-radius: 100px;
   background: rgba(160, 249, 0, 0.2);
@@ -216,9 +216,20 @@ p {
   }
 }
 
+.purpose {
+  font-size: 18px;
+  font-weight: 600;
+}
+
 @media screen and (max-width: 480px) {
   .cancel_btn {
     padding: 10px 20px;
     font-size: 14px;
+  }
+  .info {
+    font-size: 15px;
+  }
+  .purpose {
+    font-size: 16px;
   }
 }

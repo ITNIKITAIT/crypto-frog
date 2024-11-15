@@ -17,12 +17,11 @@ import moment from "moment-timezone";
 import { Link, useNavigate } from "react-router-dom";
 import Typography from "lib/ui/Typography";
 import { useTranslation } from "react-i18next";
+import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import OrderPaid from "./__OrderPaid"; // Убедитесь, что путь к файлу корректный
 import Warning from "../../assets/icons/Warning.svg";
 import Usdt from "../../assets/icons/usdt.svg";
-import Card from "../../assets/icons/card.svg";
 import Check from "../../assets/icons/check.svg";
-import Visa from "../../assets/icons/card_logo_visa.svg";
 import Copy from "../../assets/icons/copy.svg";
 import style from "./__style.module.scss";
 import DownloadOrderButton from "./__DownloadOrderButton";
@@ -179,12 +178,8 @@ const Content = ({ order }: { order: OrderProps }): JSX.Element => {
             <div>
               {order.paymentMethod === "MONOBANK" && (
                 <div className={style.info}>
-                  Card
-                  <img
-                    src={Card}
-                    alt="card"
-                    className={style["info-usdt"]}
-                  />
+                  {t("bankmethod")}
+                  <AccountBalanceIcon />
                 </div>
               )}
 
@@ -221,13 +216,6 @@ const Content = ({ order }: { order: OrderProps }): JSX.Element => {
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    {order.paymentMethod === "MONOBANK" && (
-                      <img
-                        src={Visa}
-                        alt="Visa"
-                        style={{ marginRight: 8 }}
-                      />
-                    )}
                     <IconButton onClick={handleCopyToClipboard}>
                       <img
                         src={Copy}
@@ -238,6 +226,10 @@ const Content = ({ order }: { order: OrderProps }): JSX.Element => {
                 ),
               }}
             />
+            {order.paymentMethod === "MONOBANK" && (
+              <p className={style.purpose}>{t("purposepayment")}</p>
+            )}
+
             <div className={style.warn}>
               {isOrderPaid || order?.manual ? (
                 <OrderPaid

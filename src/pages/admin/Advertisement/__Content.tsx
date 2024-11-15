@@ -9,9 +9,6 @@ const Content = (): JSX.Element => {
   const [smallFile, setSmallFile] = useState<File | null>(null);
   const [hyperlink, setHyperlink] = useState<string>("");
 
-  const isDisabled = !smallFile && !bigFile;
-  console.log(isDisabled);
-
   return (
     <Fragment>
       <div className={styles.loader__container}>
