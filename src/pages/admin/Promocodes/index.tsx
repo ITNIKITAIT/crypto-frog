@@ -36,25 +36,6 @@ const AdminPromocodes = (): JSX.Element => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<null | AxiosError>(null);
 
-  // const reload = useCallback(async () => {
-  //   try {
-  //     setIsLoading(true);
-  //     const response = await getApiUserCategoryAll();
-  //     if (response.status === 200) {
-  //       setCategories([...response.data]);
-  //     }
-  //     if (response.status === 204) {
-  //       setCategories([]);
-  //     }
-  //   } catch (_error: unknown) {
-  //     if (_error instanceof AxiosError) {
-  //       setError(_error);
-  //     }
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // }, []);
-
   useEffect(() => {
     if (!token) {
       setToken(null);

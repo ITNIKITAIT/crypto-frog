@@ -19,7 +19,21 @@ const Loader = ({
   const [isDragOver, setIsDragOver] = useState<boolean>(false);
   const { setNotification } = useNotification();
 
-  const onDropRejected = (rejectedFiles: FileRejection[]) => {
+  const validateImageDimensions = async (imageFile: File) =>
+    new Promise<boolean>(resolve => {
+      const img = new Image();
+      img.src = URL.createObjectURL(imageFile);
+      img.onload = () => {
+        if (img.width === width && img.height === height) {
+          resolve(true);
+        } else {
+          resolve(false);
+        }
+        URL.revokeObjectURL(img.src);
+      };
+    });
+
+  const onDropRejected = async (rejectedFiles: FileRejection[]) => {
     const [newFile] = rejectedFiles;
     setIsDragOver(false);
     setNotification({
@@ -27,8 +41,17 @@ const Loader = ({
       type: "error",
     });
   };
-  const onDropAccepted = (acceptedFiles: File[]) => {
+  const onDropAccepted = async (acceptedFiles: File[]) => {
     const [newFile] = acceptedFiles;
+    const isValidDimensions = await validateImageDimensions(newFile);
+    if (!isValidDimensions) {
+      setNotification({
+        message: `Ошибка: изображение должно быть ${width}x${height}px`,
+        type: "error",
+      });
+      setIsDragOver(false);
+      return;
+    }
     setFile(newFile);
 
     setIsDragOver(false);

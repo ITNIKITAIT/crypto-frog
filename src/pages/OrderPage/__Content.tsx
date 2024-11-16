@@ -248,10 +248,24 @@ const Content = ({ order }: { order: OrderProps }): JSX.Element => {
                       {t("warning")}
                     </span>
                   </div>
-                  <p>
-                    {t("send")} <b>{amountToBePaid}</b>. <br />
-                    {t("warninginfo")}
-                  </p>
+                  {order.paymentMethod !== "MONOBANK" ? (
+                    <>
+                      <b>{t("systemindent")}</b>
+                      <ul className={style.req__list}>
+                        <li>
+                          {t("send")} <b>{amountToBePaid}</b>. <br />
+                          {t("warninginfo")}
+                        </li>
+                        <li>{t("warninginfo2")}</li>
+                        <li>{t("warninginfo3")}</li>
+                      </ul>
+                    </>
+                  ) : (
+                    <div>
+                      {t("send")} <b>{amountToBePaid}</b>. <br />
+                      {t("warninginfo")}
+                    </div>
+                  )}
                 </>
               )}
             </div>

@@ -217,8 +217,9 @@
 
 .product__quantity__google__bing {
   position: absolute;
-  top: 4px;
-  left: 45px;
+  bottom: -16px;
+  left: 50%;
+  transform: translate(-50%, 100%);
   display: flex;
   width: 149px;
   height: 33px;
@@ -228,12 +229,7 @@
   align-items: center;
   border-radius: 100px;
   background: #232323;
-  @media #{$media-query-lg} {
-    top: 20px;
-    left: 100px;
-  }
   @media #{$media-query-xs} {
-    top: 10px;
-    left: 50px;
+    bottom: -10px;
   }
 }

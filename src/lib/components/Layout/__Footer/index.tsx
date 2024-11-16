@@ -2,7 +2,7 @@
 // import { useTranslation } from "react-i18next";
 import Container from "lib/ui/Container";
 // import Logo from "lib/ui/Logo";
-import Logo from "lib/ui/Logo";
+// import Logo from "lib/ui/Logo";
 import Typography from "lib/ui/Typography";
 import TelegramLink from "./__TelegramLink";
 
@@ -18,7 +18,7 @@ const Footer = ({ className }: { className: string }): JSX.Element => (
     className={className}
   >
     <div className={style.footer}>
-      <Logo />
+      {/* <Logo /> */}
       <div className={style.footer__links}>
         <TelegramLink
           name="@ulyafrogivna"

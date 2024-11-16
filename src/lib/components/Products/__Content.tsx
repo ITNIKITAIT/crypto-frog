@@ -1,15 +1,20 @@
 import { Box } from "@mui/material";
 import type { CategoryProps } from "lib/category/types";
 import type { ProductProps } from "lib/product/types";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Typography from "lib/ui/Typography";
 import { useTranslation } from "react-i18next";
+import {
+  getDesktopBanner,
+  getMobileBanner,
+} from "lib/endpoints/api/user/advertisement/get";
+import { IBannerResponse } from "lib/advertisement/types";
 import { Link } from "react-router-dom";
 import Filters from "./__Filters";
 import FiltersButton from "./__FiltersButton";
 import ProductList from "./__ProductList";
-import ad from "../../../assets/ad/ad_1.png";
-import ad_mobile from "../../../assets/ad/ad_mobile.png";
+// import ad from "../../../assets/ad/ad_1.png";
+// import ad_mobile from "../../../assets/ad/ad_mobile.png";
 
 import style from "./__style.module.scss";
 
@@ -23,17 +28,42 @@ const Content = ({
   products: ReadonlyArray<ProductProps>;
 }): JSX.Element => {
   const { t } = useTranslation();
-  const linkToBigImg = ad;
-  const linkToSmallImg = ad_mobile;
-  const hyperLink = "/";
+  const [desktopBanner, setDesktopBanner] = useState<IBannerResponse | null>(
+    null,
+  );
+  const [mobileBanner, setMobileBanner] = useState<IBannerResponse | null>(
+    null,
+  );
+
+  useEffect(() => {
+    const fetchBanners = async () => {
+      try {
+        // Получаем баннер для десктопа
+        const desktopResponse = await getDesktopBanner();
+        setDesktopBanner(desktopResponse.data);
+
+        // Получаем баннер для мобильных устройств
+        const mobileResponse = await getMobileBanner();
+        setMobileBanner(mobileResponse.data);
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error(error);
+      }
+    };
+
+    fetchBanners();
+  }, []);
 
   return (
     <Fragment>
-      {linkToSmallImg && hyperLink && (
+      {mobileBanner && mobileBanner.linkUrl && (
         <div className={style.advertisement_mobile}>
-          <Link to={hyperLink}>
+          <Link
+            target="_blank"
+            to={mobileBanner.linkUrl}
+          >
             <img
-              src={linkToSmallImg}
+              src={`data:image/jpeg;base64,${mobileBanner.image}`}
               alt="ad"
             />
           </Link>
@@ -46,11 +76,14 @@ const Content = ({
         >
           {t("products")}
         </Typography>
-        {linkToBigImg && hyperLink && (
+        {desktopBanner && desktopBanner.linkUrl && (
           <div className={style.advertisement}>
-            <Link to={hyperLink}>
+            <Link
+              target="_blank"
+              to={desktopBanner.linkUrl}
+            >
               <img
-                src={linkToBigImg}
+                src={`data:image/jpeg;base64,${desktopBanner.image}`}
                 alt="ad"
               />
             </Link>
