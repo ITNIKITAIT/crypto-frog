@@ -17,12 +17,15 @@ import numberToUsd from "lib/price/numberToUsd";
 import { round } from "lib/utils/round";
 import moment from "moment-timezone";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Typography from "lib/ui/Typography";
 import { AxiosError } from "axios";
+import Button from "lib/ui/Button";
+import Icon from "lib/ui/Icon";
 import DownloadOrderButton from "./__DownloadOrderButton";
 import { getApiUserArchivedItemById } from "../../lib/endpoints/api/user/archived-item/id/get";
+import style from "./__style.module.scss";
 
 type ItemWithNamesMap = {
   [key: string]: {
@@ -281,7 +284,18 @@ const OrderPaid = ({
           </TableBody>
         </Table>
       </TableContainer>
-      <DownloadOrderButton orderId={orderId.orderId} />
+      <div className={style.buttons__wrapper}>
+        <DownloadOrderButton orderId={orderId.orderId} />
+        <Link to="/">
+          <Button
+            type="submit"
+            variant="primary"
+          >
+            <Icon icon="home" />
+            {t("tohomepage")}
+          </Button>
+        </Link>
+      </div>
     </Container>
   );
 };

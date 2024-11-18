@@ -121,7 +121,7 @@ const Content = ({ order }: { order: OrderProps }): JSX.Element => {
         }
         if (timeRemaining <= 0 && isOrderPaid === false) {
           clearInterval(interval);
-          navigate("/");
+          // navigate("/");
         } else {
           setTimeLeft(timeRemaining);
         }
@@ -269,37 +269,38 @@ const Content = ({ order }: { order: OrderProps }): JSX.Element => {
                 </>
               )}
             </div>
-
-            <button
-              type="button"
-              className={style.cancel_btn}
-            >
-              <Link to="/">{t("cancel-order")}</Link>
-              <svg
-                width="20"
-                height="21"
-                viewBox="0 0 20 21"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+            <Link to="/">
+              <button
+                type="button"
+                className={style.cancel_btn}
               >
-                <g>
-                  <path
-                    d="M4.85602 6.33333L6.96935 8.44667L5.79102 9.625L1.66602 5.5L5.79102 1.375L6.96935 2.55333L4.85602 4.66667H10.8327C12.6008 4.66667 14.2965 5.36905 15.5467 6.61929C16.797 7.86953 17.4993 9.56522 17.4993 11.3333C17.4993 13.1014 16.797 14.7971 15.5467 16.0474C14.2965 17.2976 12.6008 18 10.8327 18H3.33268V16.3333H10.8327C12.1588 16.3333 13.4305 15.8066 14.3682 14.8689C15.3059 13.9312 15.8327 12.6594 15.8327 11.3333C15.8327 10.0073 15.3059 8.73548 14.3682 7.7978C13.4305 6.86012 12.1588 6.33333 10.8327 6.33333H4.85602Z"
-                    fill="#070A03"
-                  />
-                </g>
-                <defs>
-                  <clipPath id="clip0_126_11886">
-                    <rect
-                      width="20"
-                      height="20"
-                      fill="white"
-                      transform="translate(0 0.5)"
+                {t("cancel-order")}
+                <svg
+                  width="20"
+                  height="21"
+                  viewBox="0 0 20 21"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g>
+                    <path
+                      d="M4.85602 6.33333L6.96935 8.44667L5.79102 9.625L1.66602 5.5L5.79102 1.375L6.96935 2.55333L4.85602 4.66667H10.8327C12.6008 4.66667 14.2965 5.36905 15.5467 6.61929C16.797 7.86953 17.4993 9.56522 17.4993 11.3333C17.4993 13.1014 16.797 14.7971 15.5467 16.0474C14.2965 17.2976 12.6008 18 10.8327 18H3.33268V16.3333H10.8327C12.1588 16.3333 13.4305 15.8066 14.3682 14.8689C15.3059 13.9312 15.8327 12.6594 15.8327 11.3333C15.8327 10.0073 15.3059 8.73548 14.3682 7.7978C13.4305 6.86012 12.1588 6.33333 10.8327 6.33333H4.85602Z"
+                      fill="#070A03"
                     />
-                  </clipPath>
-                </defs>
-              </svg>
-            </button>
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_126_11886">
+                      <rect
+                        width="20"
+                        height="20"
+                        fill="white"
+                        transform="translate(0 0.5)"
+                      />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </button>
+            </Link>
 
             <Box className={style["progress-container"]}>
               <Box

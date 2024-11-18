@@ -6,15 +6,17 @@ const AdTable = ({
   file,
   width,
   height,
+  title,
 }: {
   setFile: (file: File) => void;
   width: number;
   height: number;
   file: File | null;
+  title: string;
 }) => (
   <div className={styles.loader}>
     <div>
-      <h2 className={styles.loader__title}>Баннер для ПК-версии</h2>
+      <h2 className={styles.loader__title}>{title}</h2>
       <p className={styles.loader__subtitle}>
         Загрузите изображение форматом: Ш=<span>{width}</span>px, В=
         <span>{height}</span>

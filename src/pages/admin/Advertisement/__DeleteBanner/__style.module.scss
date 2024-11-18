@@ -1,0 +1,11 @@
+.delete_btn {
+  width: fit-content;
+  background-color: #a0f901;
+  &:hover {
+    background-color: #85d100;
+  }
+}
+
+.cancel {
+  color: rgba(255, 255, 255, 0.7);
+}
