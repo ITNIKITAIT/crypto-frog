@@ -110,7 +110,6 @@ const Content = ({ order }: { order: OrderProps }): JSX.Element => {
   useEffect(() => {
     if (localTime) {
       const endTime = moment(localTime).add(15, "minutes");
-
       const interval = setInterval(() => {
         const currentTime = moment();
         const timeRemaining = endTime.diff(currentTime);
@@ -122,7 +121,7 @@ const Content = ({ order }: { order: OrderProps }): JSX.Element => {
         }
         if (timeRemaining <= 0 && isOrderPaid === false) {
           clearInterval(interval);
-          // navigate("/");
+          navigate("/");
         } else {
           setTimeLeft(timeRemaining);
         }
