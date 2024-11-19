@@ -29,7 +29,7 @@ import QrCode from "../../assets/illustrations/qr-code.jpeg";
 
 const Content = ({ order }: { order: OrderProps }): JSX.Element => {
   const navigate = useNavigate();
-  const [isOrderPaid, setIsOrderPaid] = useState<boolean>(false);
+  const [isOrderPaid, setIsOrderPaid] = useState<boolean>(order.payed);
   const [timeLeft, setTimeLeft] = useState<number>();
   const [showDownload, setShowDownload] = useState<boolean>(false);
   const serverTime = order?.date;
@@ -85,6 +85,7 @@ const Content = ({ order }: { order: OrderProps }): JSX.Element => {
     const checkOrderStatus = async () => {
       try {
         const response = await getApiUserOrderPaid({ id: order.orderId });
+
         if (response.data === true) {
           setIsOrderPaid(true);
           setShowDownload(true);
